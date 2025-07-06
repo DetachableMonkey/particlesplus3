@@ -1,0 +1,12 @@
+{
+    "type": "code",
+    "modid": "particlesplus",
+    "name": "ParticlesPlus",
+    "side": "client",
+    "authors": [
+        "el_shift"
+    ],
+    "description": "Adds particles to various blocks.",
+    "version": "1.1.1",
+    "dependencies": {}
+}
