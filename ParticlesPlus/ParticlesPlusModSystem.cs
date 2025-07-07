@@ -1,46 +1,87 @@
 ﻿using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
-using Vintagestory.API.Util;
 using Newtonsoft.Json;
+using Vintagestory.API.Client;
+using System.Linq;
 
 namespace ParticlesPlus
 {
     public class ModConfig
     {
-        public Dictionary<string, AdvancedParticleProperties[]> Data { get; set; }
+        public Dictionary<string, PresetConfig> Presets { get; set; } = new();
+        public Dictionary<string, AdvancedParticleProperties[]> Particles { get; set; } = new();
+    }
+
+    public class PresetConfig
+    {
+        public bool Enabled { get; set; }
+        public string Mask { get; set; }
+        public string Particles { get; set; }
     }
     public class ParticlesPlusModSystem : ModSystem
-    {  
-        public override void AssetsFinalize(ICoreAPI api)
+    {
+        public static ModConfig LoadedConfig { get; private set; }
+        GuiDialog dialog;
+
+        public override bool ShouldLoad(EnumAppSide forSide)
         {
-            string configName = $"{Mod.Info.ModID}.json";
-            ModConfig config = null;
+            return forSide == EnumAppSide.Client;
+        }
+        public override void StartClientSide(ICoreClientAPI api)
+        {
+            base.StartClientSide(api);
+            string configFileName = $"{Mod.Info.ModID}.json";
 
             try
             {
-                config = api.LoadModConfig<ModConfig>(configName);
-                if (config == null)
+                LoadedConfig = api.LoadModConfig<ModConfig>(configFileName);
+                if (LoadedConfig == null)
                 {
-                    string defaultConfig = api.Assets.Get(new AssetLocation(Mod.Info.ModID, "config/particlesplus.json")).ToText();
-                    config = JsonConvert.DeserializeObject<ModConfig>(defaultConfig);
+                    // Load embedded default config from mod assets
+                    var defaultConfigAsset = api.Assets.Get(new AssetLocation(Mod.Info.ModID, "config/particlesplus.json"));
+                    string defaultConfigText = defaultConfigAsset.ToText();
+
+                    // Deserialize default config
+                    LoadedConfig = JsonConvert.DeserializeObject<ModConfig>(defaultConfigText);
+
+                    // Save to mod config folder for future editing
+                    api.StoreModConfig(LoadedConfig, configFileName);
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine($"Error loading config: {e.Message}");
             }
-            
-            if (config != null && config.Data != null)
+            finally
+            {
+                dialog = new MainGuiDialog(api, LoadedConfig);
+            }
+        }
+        public override void AssetsFinalize(ICoreAPI api)
+        {
+            if (LoadedConfig != null && LoadedConfig.Presets != null && LoadedConfig.Particles != null)
             {
                 foreach (Block block in api.World.Blocks)
                 {
-                    foreach (var wildCard in config.Data)
+                    foreach (var preset in LoadedConfig.Presets)
                     {
-                        if (block.WildCardMatch(wildCard.Key))
+                        if (block.WildCardMatch(preset.Value.Mask))
                         {
-                            block.ParticleProperties ??= Array.Empty<AdvancedParticleProperties>();
-                            block.ParticleProperties = block.ParticleProperties.Append(wildCard.Value);
+                            if (LoadedConfig.Particles.TryGetValue(preset.Value.Particles, out var particles))
+                            {
+                                // Initialize if null
+                                block.ParticleProperties ??= Array.Empty<AdvancedParticleProperties>();
+
+                                // Append particles (creates new array)
+                                block.ParticleProperties = block.ParticleProperties
+                                    .Concat(particles)
+                                    .ToArray();
+                            }
+                            else
+                            {
+                                api.World.Logger.Warning($"No particles found for key '{preset.Value.Particles}' in config.");
+                            }
                         }
                     }
                 }
@@ -48,4 +89,5 @@ namespace ParticlesPlus
             api.World.Logger.Event($"Started {Mod.Info.Name} mod");
         }
     }
+ 
 }
