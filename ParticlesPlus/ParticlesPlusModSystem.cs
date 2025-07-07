@@ -9,6 +9,7 @@ namespace ParticlesPlus
 {
     public class ModConfig
     {
+        public int Version { get; set; }
         public Dictionary<string, PresetConfig> Presets { get; set; } = new();
         public Dictionary<string, AdvancedParticleProperties[]> Particles { get; set; } = new();
     }
@@ -36,6 +37,11 @@ namespace ParticlesPlus
             try
             {
                 LoadedConfig = api.LoadModConfig<ModConfig>(configFileName);
+                if (LoadedConfig.Version == 0)
+                {
+                    api.Logger.Error($"[{Mod.Info.Name}] Config file is missing required 'Version' field (old or malformed config). Please regenerate or update it.");
+                    return;
+                }
                 if (LoadedConfig == null)
                 {
                     // Load embedded default config from mod assets
@@ -51,7 +57,7 @@ namespace ParticlesPlus
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Error loading config: {e.Message}");
+                api.Logger.Error($"[{Mod.Info.Name}] Failed to load config file: {e.Message}");
             }
             finally
             {
@@ -80,13 +86,13 @@ namespace ParticlesPlus
                             }
                             else
                             {
-                                api.World.Logger.Warning($"No particles found for key '{preset.Value.Particles}' in config.");
+                                api.Logger.Warning($"[{Mod.Info.Name}] No particles found for key '{preset.Value.Particles}' in config.");
                             }
                         }
                     }
                 }
             }
-            api.World.Logger.Event($"Started {Mod.Info.Name} mod");
+            api.Logger.Event($"Started [{Mod.Info.Name}] mod");
         }
     }
  
