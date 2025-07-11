@@ -17,7 +17,7 @@ namespace ParticlesPlus
     public class PresetConfig
     {
         public bool Enabled { get; set; }
-        public string Mask { get; set; }
+        public string Wildcard { get; set; }
         public string Particles { get; set; }
     }
     public class ParticlesPlusModSystem : ModSystem
@@ -77,7 +77,7 @@ namespace ParticlesPlus
                     {
                         if (!preset.Value.Enabled) continue; // Skip if disabled
 
-                        if (block.WildCardMatch(preset.Value.Mask))
+                        if (block.WildCardMatch(preset.Value.Wildcard))
                         {
                             if (LoadedConfig.Particles.TryGetValue(preset.Value.Particles, out var particles))
                             {

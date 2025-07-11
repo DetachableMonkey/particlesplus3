@@ -3,17 +3,17 @@
   "presets": {
     "meteric-iron": {
       "enabled": true,
-      "mask": "meteorite-iron",
+      "wildcard": "meteorite-iron",
       "particles": "meteorite-particles"
     },
     "resin": {
       "enabled": true,
-      "mask": "log-resin-*",
+      "wildcard": "log-resin-*",
       "particles": "resin-drips"
     },
     "soils": {
       "enabled": true,
-      "mask": "@soil-(high|compost)-(.*)",
+      "wildcard": "@soil-(high|compost)-(.*)",
       "particles": "soil-smoke"
     }
   },
