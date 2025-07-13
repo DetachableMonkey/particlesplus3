@@ -1,24 +1,44 @@
 {
-  "version": 1,
-  "presets": {
-    "meteric-iron": {
-      "enabled": true,
-      "wildcard": "meteorite-iron",
-      "particles": "meteorite-particles"
+  "Version": 1,
+  "Presets": {
+    "Log Resin": {
+      "Enabled": true,
+      "Wildcard": "log-resin-*",
+      "Particles": "Resin Drip"
     },
-    "resin": {
-      "enabled": true,
-      "wildcard": "log-resin-*",
-      "particles": "resin-drips"
+    "Terra Preta": {
+      "Enabled": true,
+      "Wildcard": "soil-high-*",
+      "Particles": "Soil Smoke"
     },
-    "soils": {
-      "enabled": true,
-      "wildcard": "@soil-(high|compost)-(.*)",
-      "particles": "soil-smoke"
+    "High Fertility Soil": {
+      "Enabled": true,
+      "Wildcard": "soil-compost-*",
+      "Particles": "Soil Smoke"
+    },
+    "Meteoric Iron": {
+      "Enabled": true,
+      "Wildcard": "meteorite-iron",
+      "Particles": "Meteorite Sparks"
+    },
+    "Peat": {
+      "Enabled": true,
+      "Wildcard": "peat-*",
+      "Particles": "Soil Smoke"
+    },
+    "Blue Clay": {
+      "Enabled": true,
+      "Wildcard": "rawclay-blue-*",
+      "Particles": "Soil Smoke"
+    },
+    "Red Clay": {
+      "Enabled": true,
+      "Wildcard": "rawclay-red-*",
+      "Particles": "Soil Smoke"
     }
   },
-  "particles": {
-    "resin-drips": [
+  "Particles": {
+    "Resin Drip": [
       {
         "HsvaColor": [
           {
@@ -68,6 +88,8 @@
         ],
         "RandomVelocityChange": false,
         "DieOnRainHeightmap": false,
+        "SecondaryParticles": null,
+        "DeathParticles": null,
         "SecondarySpawnInterval": {
           "offset": 0.0,
           "avg": 0.0,
@@ -79,6 +101,10 @@
         "DieInLiquid": false,
         "SwimOnLiquid": false,
         "ColorByBlock": false,
+        "OpacityEvolve": null,
+        "RedEvolve": null,
+        "GreenEvolve": null,
+        "BlueEvolve": null,
         "GravityEffect": {
           "offset": 0.0,
           "avg": 0.5,
@@ -105,7 +131,8 @@
         },
         "SizeEvolve": {
           "transform": 1,
-          "factor": 1.0
+          "factor": 1.0,
+          "maxvalue": null
         },
         "Velocity": [
           {
@@ -127,11 +154,12 @@
             "dist": 0
           }
         ],
+        "VelocityEvolve": null,
         "ParticleModel": 1,
         "VertexFlags": 8192,
         "SelfPropelled": false,
         "TerrainCollision": true,
-        "WindAffectednes": 0.01
+        "WindAffectednes": 1.0
       },
       {
         "HsvaColor": [
@@ -182,6 +210,8 @@
         ],
         "RandomVelocityChange": false,
         "DieOnRainHeightmap": false,
+        "SecondaryParticles": null,
+        "DeathParticles": null,
         "SecondarySpawnInterval": {
           "offset": 0.0,
           "avg": 0.0,
@@ -193,6 +223,10 @@
         "DieInLiquid": false,
         "SwimOnLiquid": false,
         "ColorByBlock": false,
+        "OpacityEvolve": null,
+        "RedEvolve": null,
+        "GreenEvolve": null,
+        "BlueEvolve": null,
         "GravityEffect": {
           "offset": 0.0,
           "avg": 0.5,
@@ -219,7 +253,8 @@
         },
         "SizeEvolve": {
           "transform": 1,
-          "factor": 1.0
+          "factor": 1.0,
+          "maxvalue": null
         },
         "Velocity": [
           {
@@ -241,11 +276,12 @@
             "dist": 0
           }
         ],
+        "VelocityEvolve": null,
         "ParticleModel": 1,
         "VertexFlags": 8192,
         "SelfPropelled": false,
         "TerrainCollision": true,
-        "WindAffectednes": 0.01
+        "WindAffectednes": 1.0
       },
       {
         "HsvaColor": [
@@ -296,6 +332,8 @@
         ],
         "RandomVelocityChange": false,
         "DieOnRainHeightmap": false,
+        "SecondaryParticles": null,
+        "DeathParticles": null,
         "SecondarySpawnInterval": {
           "offset": 0.0,
           "avg": 0.0,
@@ -307,6 +345,10 @@
         "DieInLiquid": false,
         "SwimOnLiquid": false,
         "ColorByBlock": false,
+        "OpacityEvolve": null,
+        "RedEvolve": null,
+        "GreenEvolve": null,
+        "BlueEvolve": null,
         "GravityEffect": {
           "offset": 0.0,
           "avg": 0.5,
@@ -333,7 +375,8 @@
         },
         "SizeEvolve": {
           "transform": 1,
-          "factor": 1.0
+          "factor": 1.0,
+          "maxvalue": null
         },
         "Velocity": [
           {
@@ -355,11 +398,12 @@
             "dist": 0
           }
         ],
+        "VelocityEvolve": null,
         "ParticleModel": 1,
         "VertexFlags": 8192,
         "SelfPropelled": false,
         "TerrainCollision": true,
-        "WindAffectednes": 0.01
+        "WindAffectednes": 1.0
       },
       {
         "HsvaColor": [
@@ -410,6 +454,8 @@
         ],
         "RandomVelocityChange": false,
         "DieOnRainHeightmap": false,
+        "SecondaryParticles": null,
+        "DeathParticles": null,
         "SecondarySpawnInterval": {
           "offset": 0.0,
           "avg": 0.0,
@@ -421,6 +467,10 @@
         "DieInLiquid": false,
         "SwimOnLiquid": false,
         "ColorByBlock": false,
+        "OpacityEvolve": null,
+        "RedEvolve": null,
+        "GreenEvolve": null,
+        "BlueEvolve": null,
         "GravityEffect": {
           "offset": 0.0,
           "avg": 0.5,
@@ -447,7 +497,8 @@
         },
         "SizeEvolve": {
           "transform": 1,
-          "factor": 1.0
+          "factor": 1.0,
+          "maxvalue": null
         },
         "Velocity": [
           {
@@ -469,14 +520,15 @@
             "dist": 0
           }
         ],
+        "VelocityEvolve": null,
         "ParticleModel": 1,
         "VertexFlags": 8192,
         "SelfPropelled": false,
         "TerrainCollision": true,
-        "WindAffectednes": 0.01
+        "WindAffectednes": 1.0
       }
     ],
-    "soil-smoke": [
+    "Soil Smoke": [
       {
         "HsvaColor": [
           {
@@ -526,6 +578,8 @@
         ],
         "RandomVelocityChange": false,
         "DieOnRainHeightmap": false,
+        "SecondaryParticles": null,
+        "DeathParticles": null,
         "SecondarySpawnInterval": {
           "offset": 0.0,
           "avg": 0.0,
@@ -539,8 +593,12 @@
         "ColorByBlock": false,
         "OpacityEvolve": {
           "transform": 5,
-          "factor": -16.0
+          "factor": -16.0,
+          "maxvalue": null
         },
+        "RedEvolve": null,
+        "GreenEvolve": null,
+        "BlueEvolve": null,
         "GravityEffect": {
           "offset": 0.0,
           "avg": -0.06,
@@ -567,7 +625,8 @@
         },
         "SizeEvolve": {
           "transform": 5,
-          "factor": 1.2
+          "factor": 1.2,
+          "maxvalue": null
         },
         "Velocity": [
           {
@@ -579,7 +638,7 @@
           {
             "offset": 0.0,
             "avg": 0.0,
-            "var": 0.20,
+            "var": 0.2,
             "dist": 0
           },
           {
@@ -589,6 +648,7 @@
             "dist": 0
           }
         ],
+        "VelocityEvolve": null,
         "ParticleModel": 0,
         "VertexFlags": 0,
         "SelfPropelled": false,
@@ -596,7 +656,7 @@
         "WindAffectednes": 1.0
       }
     ],
-    "meteorite-particles": [
+    "Meteorite Sparks": [
       {
         "HsvaColor": [
           {
@@ -646,6 +706,8 @@
         ],
         "RandomVelocityChange": false,
         "DieOnRainHeightmap": false,
+        "SecondaryParticles": null,
+        "DeathParticles": null,
         "SecondarySpawnInterval": {
           "offset": 0.0,
           "avg": 0.0,
@@ -659,8 +721,12 @@
         "ColorByBlock": false,
         "OpacityEvolve": {
           "transform": 5,
-          "factor": -30.0
+          "factor": -30.0,
+          "maxvalue": null
         },
+        "RedEvolve": null,
+        "GreenEvolve": null,
+        "BlueEvolve": null,
         "GravityEffect": {
           "offset": 0.0,
           "avg": 0.0,
@@ -687,7 +753,8 @@
         },
         "SizeEvolve": {
           "transform": 0,
-          "factor": 0.0
+          "factor": 0.0,
+          "maxvalue": null
         },
         "Velocity": [
           {
@@ -709,6 +776,7 @@
             "dist": 0
           }
         ],
+        "VelocityEvolve": null,
         "ParticleModel": 0,
         "VertexFlags": 129,
         "SelfPropelled": false,
