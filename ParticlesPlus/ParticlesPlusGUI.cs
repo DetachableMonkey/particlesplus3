@@ -95,7 +95,7 @@ namespace ParticlesPlus
                 );
 
             // Lastly, create the dialog
-            SingleComposer = capi.Gui.CreateCompo("myAwesomeDialog", dialogBounds)
+            SingleComposer = capi.Gui.CreateCompo("ppMainDialog", dialogBounds)
                 .AddShadedDialogBG(bgBounds)
                 .AddDialogTitleBar("Particles Plus Configuration", OnTitleBarCloseClicked)
                 .AddStaticText("Preset:", CairoFont.WhiteSmallText(), presetDropdownLabelBounds)
