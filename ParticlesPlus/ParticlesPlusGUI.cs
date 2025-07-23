@@ -193,19 +193,19 @@ namespace ParticlesPlus
             {
                 if (selectedPreset.Wildcard != wildcard || selectedPreset.Particles != particles)
                 {
-                    RemoveParticles(selectedPreset.Wildcard);
-                    AddParticles(wildcard, modConfig.Particles[particles]);
+                    modSystem.RemoveParticles(capi, selectedPreset.Wildcard);
+                    modSystem.AddParticles(capi, wildcard, modConfig.Particles[particles]);
                 }
             }
 
             if (selectedPreset.Enabled && !enabled)
             {
-                RemoveParticles(wildcard);
+                modSystem.RemoveParticles(capi, wildcard);
             }
 
             if (!selectedPreset.Enabled && enabled)
             {
-                AddParticles(wildcard, modConfig.Particles[particles]);
+                modSystem.AddParticles(capi, wildcard, modConfig.Particles[particles]);
             }
 
             selectedPreset.Particles = particles;
@@ -226,7 +226,7 @@ namespace ParticlesPlus
             }
 
             // Remove key particles
-            RemoveParticles(modConfig.Presets[keyToDelete].Wildcard);
+            modSystem.RemoveParticles(capi, modConfig.Presets[keyToDelete].Wildcard);
             // Remove Key
             modConfig.Presets.Remove(keyToDelete);
             // Update Presets List for Dropdown
@@ -243,29 +243,6 @@ namespace ParticlesPlus
         {
             string[] presetNames = GetPresetNames();
             presetDropdown.SetList(presetNames, presetNames);
-        }
-        private Block[] GetBlocks(string wildcard)
-        {
-            return capi.World.SearchBlocks(wildcard);
-        }
-        private void RemoveParticles(string wildcard)
-        {
-            Block[] blocks = GetBlocks(wildcard);
-            foreach (Block block in blocks)
-            {
-                block.ParticleProperties = Array.Empty<AdvancedParticleProperties>();
-            }
-        }
-        private void AddParticles(string wildcard, AdvancedParticleProperties[] particles)
-        {
-            Block[] blocks = GetBlocks(wildcard);
-            foreach (Block block in blocks)
-            {
-                block.ParticleProperties ??= Array.Empty<AdvancedParticleProperties>();
-                block.ParticleProperties = block.ParticleProperties
-                                .Concat(particles)
-                                .ToArray();
-            }
         }
     } 
 }

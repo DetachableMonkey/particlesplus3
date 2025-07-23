@@ -102,6 +102,29 @@ namespace ParticlesPlus
         {
             capi.StoreModConfig(LoadedConfig, configFileName);
         }
+        private Block[] GetBlocks(ICoreClientAPI api, string wildcard)
+        {
+            return api.World.SearchBlocks(wildcard);
+        }
+        public void RemoveParticles(ICoreClientAPI api, string wildcard)
+        {
+            Block[] blocks = GetBlocks(api, wildcard);
+            foreach (Block block in blocks)
+            {
+                block.ParticleProperties = Array.Empty<AdvancedParticleProperties>();
+            }
+        }
+        public void AddParticles(ICoreClientAPI api, string wildcard, AdvancedParticleProperties[] particles)
+        {
+            Block[] blocks = GetBlocks(api, wildcard);
+            foreach (Block block in blocks)
+            {
+                block.ParticleProperties ??= Array.Empty<AdvancedParticleProperties>();
+                block.ParticleProperties = block.ParticleProperties
+                                .Concat(particles)
+                                .ToArray();
+            }
+        }
     }
  
 }
