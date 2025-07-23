@@ -4,6 +4,7 @@ using Vintagestory.API.Common;
 using Newtonsoft.Json;
 using Vintagestory.API.Client;
 using System.Linq;
+using Vintagestory.API.Datastructures;
 
 namespace ParticlesPlus
 {
@@ -69,9 +70,9 @@ namespace ParticlesPlus
             dialog = new MainGuiDialog(api, LoadedConfig, this);   
             api.Input.RegisterHotKey(
                     "toggleParticles",
-                    "My Hotkey Description",
+                    "Toggle Particles Plus",
                     GlKeys.P,
-                    HotkeyType.GUIOrOtherControls,         
+                    HotkeyType.HelpAndOverlays,         
                     shiftPressed: false,
                     ctrlPressed: true,
                     altPressed: false
@@ -137,6 +138,7 @@ namespace ParticlesPlus
                 WriteConfig();
             }
             return true;
+
         }
 
         private void ApplyConfigPresets(ModConfig config)
