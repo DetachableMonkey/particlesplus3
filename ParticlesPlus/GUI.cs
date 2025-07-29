@@ -93,11 +93,11 @@ namespace ParticlesPlus
                 .AddDropDown(GetPresetNames(), GetPresetNames(), 0, OnPresetSelection, presetDropdownBounds, "presetDropdown")
                 .AddButton("Add New", OnAddNew, addNewButtonBounds)
                 .AddStaticText("Preset Name:", CairoFont.WhiteSmallText(), keyInputLabelBounds)
-                .AddTextInput(keyInputBounds, (string text) => { }, key: "keyInput")
+                .AddTextInput(keyInputBounds, (text) => { }, key: "keyInput")
                 .AddStaticText("Particles:", CairoFont.WhiteSmallText(), particlesDropdownLabelBounds)
                 .AddDropDown(GetParticlesNames(), GetParticlesNames(), 0, null, particlesDropdownBounds, "particlesDropdown")
                 .AddStaticText("Wildcard:", CairoFont.WhiteSmallText(), wildcardInputLabelBounds)
-                .AddTextInput(wildcardInputBounds, (string text) => { }, key: "wildcardInput")
+                .AddTextInput(wildcardInputBounds, (text) => { }, key: "wildcardInput")
                 .AddSwitch(null, switchBounds, size: 30, key: "enabledSwitch")
                 .AddStaticText("Enabled", CairoFont.WhiteSmallText(), switchLabelBounds)
                 .AddButton("Save", OnSave, saveButtonBounds)
@@ -174,7 +174,7 @@ namespace ParticlesPlus
         {
             if (selectedPreset == null) return false;
 
-            string name = SingleComposer.GetTextInput("keyInput").Text;
+            // string name = SingleComposer.GetTextInput("keyInput").Text;
             string particles = SingleComposer.GetDropDown("particlesDropdown").SelectedValue;
             string wildcard = SingleComposer.GetTextInput("wildcardInput").GetText();
             bool enabled = SingleComposer.GetSwitch("enabledSwitch").On;

@@ -137,7 +137,6 @@ namespace ParticlesPlus
             {
                 if (!preset.Value.Enabled) continue; // Skip if disabled
 
-                Block[] blocks = GetBlocks(preset.Value.Wildcard);
                 AdvancedParticleProperties[] particles = GetParticles(preset.Value.Particles);
 
                 AddParticles(preset.Value.Wildcard, particles);
@@ -150,14 +149,11 @@ namespace ParticlesPlus
             {
                 if (!preset.Value.Enabled) continue; // Skip if disabled
 
-                Block[] blocks = GetBlocks(preset.Value.Wildcard);
-                AdvancedParticleProperties[] particles = GetParticles(preset.Value.Particles);
-
                 RemoveParticles(preset.Value.Wildcard);
             }
         }
 
-        private AdvancedParticleProperties[] GetParticles(string particlesKey)
+        private static AdvancedParticleProperties[] GetParticles(string particlesKey)
         {
             return LoadedConfig.Particles.TryGetValue(particlesKey, out var particles)
                 ? particles
