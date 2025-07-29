@@ -6,11 +6,11 @@ namespace ParticlesPlus
     public class MainGuiDialog : GuiDialog
     {
         public override string ToggleKeyCombinationCode => "particlesplus";
-        private readonly ParticlesPlusModSystem modSystem;
+        private readonly ModSystem modSystem;
         private readonly ModConfig modConfig;
         private PresetConfig selectedPreset;
 
-        public MainGuiDialog(ICoreClientAPI capi, ModConfig config, ParticlesPlusModSystem modSystem) : base(capi)
+        public MainGuiDialog(ICoreClientAPI capi, ModConfig config, ModSystem modSystem) : base(capi)
         {
             this.modConfig = config;
             this.modSystem = modSystem;

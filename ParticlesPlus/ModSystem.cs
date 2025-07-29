@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace ParticlesPlus
 {
-    public class ParticlesPlusModSystem : ModSystem
+    public class ModSystem : Vintagestory.API.Common.ModSystem
     {
         public static ModConfig LoadedConfig { get; private set; }
         private string configFileName;
