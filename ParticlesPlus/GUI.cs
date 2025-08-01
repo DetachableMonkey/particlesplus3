@@ -175,7 +175,7 @@ namespace ParticlesPlus
             string[] presetNames = GetPresetNames();
             presetDropdown.SetList(presetNames, presetNames);
             OnPresetSelection(newKeyName, true);
-          
+            modSystem.WriteConfig();
             keyInput.SetValue("");
             chatMessanger.ShowMessage(Constants.ChatMessages.PresetAdded, MessageType.Success);
             return true;
@@ -192,7 +192,6 @@ namespace ParticlesPlus
 
             string preset = presetDropdown.SelectedValue;
             string particles = particlesDropdown.SelectedValue;
-            int particlesIndex = particlesDropdown.SelectedIndices[0];
             string wildcard = wildcardInput.GetText();
             bool enabled = enabledSwitch.On;
 
