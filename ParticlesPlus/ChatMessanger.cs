@@ -13,8 +13,8 @@ namespace ParticlesPlus
         private readonly ICoreClientAPI _capi;
 
         private readonly string _modName;
-        private readonly string successColor = "#5FED6F";
-        private readonly string failColor = "#ED5E60";
+        private readonly string successColor = "#5CAE63";
+        private readonly string errorColor = "#D75F4C";
 
 
         public ChatMessanger(ICoreClientAPI capi, ModSystem modSystem)
@@ -29,7 +29,7 @@ namespace ParticlesPlus
             string messageColor = type switch
             {
                 MessageType.Success => successColor,
-                MessageType.Error => failColor,
+                MessageType.Error => errorColor,
                 _ => "#FFFFFF",
             };
 
