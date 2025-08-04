@@ -222,23 +222,15 @@ namespace ParticlesPlus
             GuiElementDropDown presetDropdown = SingleComposer.GetDropDown("presetDropdown");
             string keyToDelete = presetDropdown.SelectedValue;
 
-            if (keyToDelete == "<none>")
-            {
-                return false;
-            }
+            modConfig.RemovePreset(keyToDelete);
 
-            // Remove key particles
-            particlesManager.RemoveParticles(modConfig.Presets[keyToDelete].Wildcard);
-            // Remove Key
-            modConfig.Presets.Remove(keyToDelete);
-            // Update Presets List for Dropdown
             string[] presetNames = GetPresetNames();
             // Set updated list to dropdown
             UpdatePresetDropdownList(presetDropdown);
             // Set form to first element in updated list if empty reset form.
             OnPresetSelection(presetNames[0], true);
 
-            modConfig.WriteConfig();
+            
             chatMessanger.ShowMessage(Constants.ChatMessages.PresetRemoved, MessageType.Success);
             return true;
         }
