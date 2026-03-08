@@ -37,6 +37,7 @@ namespace ParticlesPlus
             ModConfig.Initialize();
             api.Logger.Event($"Started [{Mod.Info.Name}] mod");
         }
+
         private bool OnHotkeyToggleParticles(KeyCombination keyComb)
         {
             GuiElementSwitch globalSwitch = dialog.Composers["single"].GetSwitch("globalSwitch");

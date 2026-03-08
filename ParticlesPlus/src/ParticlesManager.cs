@@ -21,6 +21,7 @@ namespace ParticlesPlus
         public void RemoveParticles(string wildcard)
         {
             Block[] blocks = GetBlocks(wildcard);
+
             foreach (Block block in blocks)
             {
                 block.ParticleProperties = Array.Empty<AdvancedParticleProperties>();
@@ -31,6 +32,7 @@ namespace ParticlesPlus
             if (particles == null || particles.Length == 0) return;
 
             Block[] blocks = GetBlocks(wildcard);
+
             foreach (Block block in blocks)
             {
                 block.ParticleProperties ??= Array.Empty<AdvancedParticleProperties>();

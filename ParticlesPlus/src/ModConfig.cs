@@ -38,13 +38,15 @@ namespace ParticlesPlus
 
                 if (loadedConfig == null) // If config doesn't exist create and write default one
                 {
-                    var defaultConfigAsset = API.Assets.Get(new AssetLocation(modSystem.Mod.Info.ModID, "config/particlesplus.json"));
-                    string defaultConfigText = defaultConfigAsset.ToText();
+                    SaveOrCreateConfig(API, ConfigFileName, new ModConfig { Version = 1 });
+                    //var defaultConfigAsset = API.Assets.Get(new AssetLocation(modSystem.Mod.Info.ModID, ConfigFileName));
 
-                    loadedConfig = JsonConvert.DeserializeObject<ModConfig>(defaultConfigText);
+                    //string defaultConfigText = defaultConfigAsset.ToText();
 
-                    CopyFrom(loadedConfig);
-                    WriteConfig();
+                    //loadedConfig = JsonConvert.DeserializeObject<ModConfig>(defaultConfigText);
+
+                    //CopyFrom(loadedConfig);
+                    //WriteConfig();
                 }
                 else
                 {
@@ -64,6 +66,12 @@ namespace ParticlesPlus
                 throw new InvalidOperationException(errorMsg, e);
             }
         }
+
+        private static void SaveOrCreateConfig(ICoreAPI api, string configFileName, ModConfig config = default)
+        {
+            api.StoreModConfig(config ?? new(), configFileName);
+        }
+
         public void Initialize()
         {
             if (!Global) return;

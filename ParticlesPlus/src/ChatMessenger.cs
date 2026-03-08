@@ -7,7 +7,7 @@ namespace ParticlesPlus
         Error,
         Success        
     }
-    internal class ChatMessanger
+    internal class ChatMessenger
     {
         private readonly ModSystem _modSystem;
         private ICoreClientAPI API => _modSystem.capi;
@@ -17,7 +17,7 @@ namespace ParticlesPlus
         private readonly string errorColor = "#D75F4C";
 
 
-        public ChatMessanger(ModSystem modSystem)
+        public ChatMessenger(ModSystem modSystem)
         {
             _modSystem = modSystem;
         }

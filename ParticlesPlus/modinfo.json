@@ -1,12 +1,12 @@
 {
     "type": "code",
-    "modid": "particlesplus",
-    "name": "ParticlesPlus",
+    "modid": "particlesplus3",
+    "name": "ParticlesPlus3",
     "side": "client",
     "authors": [
-        "el_shift"
+        "detachablemonkey"
     ],
     "description": "Adds particles to various blocks.",
-    "version": "2.3.2",
+    "version": "3.0.0",
     "dependencies": {}
 }

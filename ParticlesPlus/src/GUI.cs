@@ -9,13 +9,13 @@ namespace ParticlesPlus
         private readonly ModSystem modSystem;
         private ModConfig ModConfig => modSystem.ModConfig;
         private PresetConfig selectedPreset;
-        private readonly ChatMessanger chatMessanger;
+        private readonly ChatMessenger chatMessenger;
 
         public MainGuiDialog(ModSystem modSystem) : base(modSystem.capi)
         {
             this.modSystem = modSystem;
             selectedPreset = null;
-            chatMessanger = new ChatMessanger(modSystem);
+            chatMessenger = new ChatMessenger(modSystem);
 
             SetupDialog();
             capi.Gui.RegisterDialog(this);
@@ -154,13 +154,13 @@ namespace ParticlesPlus
 
             if (string.IsNullOrWhiteSpace(newKeyName))
             {
-                chatMessanger.ShowMessage(Constants.ChatMessages.EmptyNameError, MessageType.Error);
+                chatMessenger.ShowMessage(Constants.ChatMessages.EmptyNameError, MessageType.Error);
                 return false;
             }
 
             if (ModConfig.Presets.ContainsKey(newKeyName))
             {
-                chatMessanger.ShowMessage(Constants.ChatMessages.DuplicateNameError, MessageType.Error);
+                chatMessenger.ShowMessage(Constants.ChatMessages.DuplicateNameError, MessageType.Error);
                 return false;
             }
 
@@ -177,7 +177,7 @@ namespace ParticlesPlus
             OnPresetSelection(newKeyName, true);
             ModConfig.WriteConfig();
             keyInput.SetValue("");
-            chatMessanger.ShowMessage(Constants.ChatMessages.PresetAdded, MessageType.Success);
+            chatMessenger.ShowMessage(Constants.ChatMessages.PresetAdded, MessageType.Success);
             return true;
         }
         private bool OnSave()
@@ -198,7 +198,7 @@ namespace ParticlesPlus
             if (!RegexValidator.IsValidRegex(wildcard))
             {
                 OnPresetSelection(preset, true);
-                chatMessanger.ShowMessage(Constants.ChatMessages.RegexError, MessageType.Error);
+                chatMessenger.ShowMessage(Constants.ChatMessages.RegexError, MessageType.Error);
                 return false;
             }
 
@@ -210,7 +210,7 @@ namespace ParticlesPlus
             };
 
             ModConfig.UpdatePreset(preset, updatedPreset);
-            chatMessanger.ShowMessage(Constants.ChatMessages.PresetSaved, MessageType.Success);
+            chatMessenger.ShowMessage(Constants.ChatMessages.PresetSaved, MessageType.Success);
             return true;
             
         }
@@ -228,7 +228,7 @@ namespace ParticlesPlus
             OnPresetSelection(presetNames[0], true);
 
             
-            chatMessanger.ShowMessage(Constants.ChatMessages.PresetRemoved, MessageType.Success);
+            chatMessenger.ShowMessage(Constants.ChatMessages.PresetRemoved, MessageType.Success);
             return true;
         }
         private void UpdatePresetDropdownList(GuiElementDropDown presetDropdown)
