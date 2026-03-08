@@ -1,4 +1,9 @@
-This is started from here: https://mods.vintagestory.at/vtp
-Kudos to Dana (https://github.com/Craluminum-Mods)
+# ParticlesPlus
+A mod for Vintage Story based on [VTP](https://mods.vintagestory.at/vtp) by Dana.
 
-Take it, use it, if you have questions im at discord @el_shift
+## Credits
+- Original logic by [Craluminum-Mods](https://github.com/Craluminum-Mods)
+- Expanded by @el_shift
+
+## Contact
+Questions? Find me on Discord: `@el_shift`
