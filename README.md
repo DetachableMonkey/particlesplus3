@@ -7,3 +7,7 @@ A mod for Vintage Story based on [Visible Terra Preta Particles](https://mods.vi
 
 ## Contact
 Questions? Find me on Discord: `@el_shift`
+
+## Changes
+
+Feel free to contribute but I will not accept any dependancies.
